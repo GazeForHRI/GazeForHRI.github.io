@@ -1,1 +1,517 @@
-<html><head><title>Gaze4HRI</title></head><body><h1>Gaze4HRI: Accepted at FG2026</h1><p>Website under construction.</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gaze4HRI | FG 2026 Dataset and Benchmark</title>
+  <meta name="description" content="Gaze4HRI is a large-scale HRI dataset and zero-shot benchmark for appearance-based 3D gaze estimation under illumination, camera viewpoint, head-gaze conflict, and mutual-gaze conditions." />
+  <meta property="og:title" content="Gaze4HRI: HRI Gaze Estimation Dataset and Benchmark" />
+  <meta property="og:description" content="A dataset-first project page for the Gaze4HRI FG 2026 paper, dataset, and benchmark results." />
+  <!-- FIGURE TODO: after adding a real teaser, set og:image to figures/teaser_figure.png -->
+  <meta property="og:image" content="figures/teaser_figure.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Gaze4HRI home">
+        <span class="brand-mark">G4H</span>
+        <span>Gaze4HRI</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" data-nav-links>
+        <a href="#dataset">Dataset</a>
+        <a href="#conditions">Conditions</a>
+        <a href="#format">Format</a>
+        <a href="#benchmark">Benchmark</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section-pad" id="top">
+      <div class="hero-bg" aria-hidden="true"></div>
+
+      <div class="container hero-centered">
+        <div class="hero-copy-centered">
+          <p class="eyebrow">FG 2026 · Dataset + Zero-shot Benchmark</p>
+
+          <h1>
+            Gaze4HRI: Zero-shot Benchmarking Gaze Estimation Neural-Networks for Human-Robot Interaction
+          </h1>
+
+          <p class="authors">
+            Berk Sezer, Ali Görkem Küçük, Erol Şahin, and Sinan Kalkan
+          </p>
+
+          <p class="affiliation">
+            Department of Computer Engineering and ROMER, Middle East Technical University, Ankara, Türkiye
+          </p>
+
+          <p class="hero-lede">
+            A large-scale HRI gaze dataset for testing appearance-based 3D gaze estimation under lighting variation, robot-camera motion, head-gaze conflict, and mutual-gaze scenarios.
+          </p>
+
+          <div class="hero-link-row" aria-label="Project links">
+            <a class="hero-pill" href="#" data-link="paper" aria-label="Open paper page">
+              <img src="figures/icons/pdf.svg" alt="" />
+              <span>Paper</span>
+            </a>
+
+            <a class="hero-pill" href="#" data-link="arxiv" aria-label="Open arXiv page">
+              <img src="figures/icons/arxiv.svg" alt="" />
+              <span>arXiv</span>
+            </a>
+            
+            <a class="hero-pill" href="#" data-link="dataset" aria-label="Open dataset">
+              <img src="figures/icons/drive.svg" alt="" />
+              <span>Dataset</span>
+            </a>
+
+            <a class="hero-pill" href="#" data-link="code" aria-label="Open main code repository">
+              <img src="figures/icons/github.svg" alt="" />
+              <span>Code</span>
+            </a>
+
+            <a class="hero-pill" href="#" data-link="modelRepo" aria-label="Open model evaluation repository">
+              <img src="figures/icons/github.svg" alt="" />
+              <span>Models</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-stats-row" aria-label="Key dataset statistics">
+          <div><strong>52</strong><span>subjects</span></div>
+          <div><strong>3,258</strong><span>videos</span></div>
+          <div><strong>620,933</strong><span>frames</span></div>
+          <div><strong>5.7h</strong><span>video</span></div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <!-- FIGURE TODO: Add figures/teaser_figure.png or figures/teaser.gif showing: subject + robot-mounted RGB camera + gaze target + predicted/ground-truth gaze vectors. -->
+          <img 
+            class="teaser-img-large"
+            src="figures/teaser_figure.png" 
+            alt="Gaze4HRI overview: robot-mounted camera records participants looking at table and robot targets." 
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad narrow" id="tldr">
+      <div class="container">
+        <div class="section-heading center">
+          <p class="eyebrow">TL;DR</p>
+          <h2>A dataset for evaluating gaze estimation under practical HRI conditions.</h2>
+        </div>
+        <div class="tldr-card">
+          <p>
+            <strong>Gaze4HRI</strong> benchmarks zero-shot 3D gaze estimation in HRI settings where a robot-mounted camera observes people looking at shared workspace objects or at the robot itself. The dataset foregrounds controlled HRI variables illumination, moving camera viewpoint, head-gaze conflict, and moving target/mutual gaze while the benchmark shows that current methods still struggle, especially for steeply downward gaze.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad alt" id="dataset">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Dataset focus</p>
+          <h2>What Gaze4HRI contains</h2>
+          <p>
+            The page should first sell the dataset: synchronized RGB video, motion-capture-based ground truth, HRI-specific camera/target motion, and analysis-ready experiment labels.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="icon">🎥</span>
+            <h3>RGB video from a robot viewpoint</h3>
+            <p>Participants are recorded by an Intel RealSense D435i mounted on a UR5 wrist, matching a robot perception viewpoint rather than a laptop or static camera setup.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon">🎯</span>
+            <h3>3D gaze ground truth</h3>
+            <p>Gaze vectors are computed from calibrated interpupillary midpoint positions and known gaze target locations, expressed in the camera frame.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon">🤖</span>
+            <h3>HRI task coverage</h3>
+            <p>The dataset covers object-centered gaze on a shared table and mutual gaze where the participant follows the robot camera as a moving target.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon">👁️</span>
+            <h3>Blink-aware evaluation</h3>
+            <p>Blinked frames are masked for gaze evaluation, and the repository also includes Blink4HRI-related tooling for blink detection experiments.</p>
+          </article>
+        </div>
+
+        <div class="two-col media-block">
+          <div>
+            <h3>Collection setup</h3>
+            <p>
+              Gaze4HRI uses a controlled lab HRI setup centered around a UR5 robot arm, wrist-mounted RGB camera, and OptiTrack motion capture. This gives the benchmark accurate head/eye geometry while preserving the camera viewpoint challenges of robot perception.
+            </p>
+            <ul class="check-list">
+              <li>RGB images: 1920×1080 at 30 FPS</li>
+              <li>Motion capture: 100 Hz</li>
+              <li>Ground truth: vector from interpupillary midpoint to gaze target</li>
+              <li>Evaluation: angular error between predicted and ground-truth 3D gaze vectors</li>
+            </ul>
+          </div>
+          <div>
+            <!-- FIGURE TODO: Add figures/setup_overview.png showing the UR5, RealSense camera, participant, table targets, and OptiTrack markers. -->
+            <img 
+              class="setup-overview-img"
+              src="figures/setup_overview.png" 
+              alt="Gaze4HRI setup overview image" 
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="conditions">
+      <div class="container">
+        <div class="section-heading center">
+          <p class="eyebrow">Experiment modules</p>
+          <h2>Four HRI variables, one consistent benchmark</h2>
+          <p>The dataset is organized around named experiment types, so researchers can evaluate exactly where a model fails.</p>
+        </div>
+
+        <!-- FIGURE TODO: Add figures/experiment_design_all.png as a 2×2 panel showing illumination, camera viewpoint, head-gaze conflict, and moving target/mutual gaze setups. -->
+       <img 
+          class="experiment-design-all-img"
+          src="figures/experiment_design_all.png" 
+          alt="Gaze4HRI overview: robot-mounted camera records participants looking at table and robot targets." 
+        />
+
+        <div class="condition-grid">
+          <article class="condition-card" data-accent="light">
+            <p class="label">Exp. 1</p>
+            <h3>Illumination</h3>
+            <p>Controlled lighting levels test whether gaze models stay accurate from dim to bright conditions.</p>
+            <code>lighting_10</code><code>lighting_25</code><code>lighting_50</code><code>lighting_100</code>
+            <!-- FIGURE TODO: Add figures/lighting_samples.png showing sample frames at the four illumination levels. -->
+          </article>
+          <article class="condition-card" data-accent="conflict">
+            <p class="label">Exp. 2</p>
+            <h3>Head-gaze conflict</h3>
+            <p>Fixed head orientations create different degrees of conflict between head-forward and gaze direction.</p>
+            <code>head_pose_left</code><code>head_pose_middle</code><code>head_pose_right</code>
+            <!-- FIGURE TODO: Add figures/head_gaze_conflict.png with blue head direction and green gaze direction arrows. -->
+          </article>
+          <article class="condition-card" data-accent="camera">
+            <p class="label">Exp. 3</p>
+            <h3>Camera viewpoint</h3>
+            <p>The robot camera moves on an arc around the participant while gaze targets remain on the table.</p>
+            <code>circular_movement</code>
+            <!-- GIF TODO: Add figures/camera_viewpoint.gif showing the robot-camera arc. -->
+          </article>
+          <article class="condition-card" data-accent="motion">
+            <p class="label">Exp. 4</p>
+            <h3>Moving target / mutual gaze</h3>
+            <p>The participant follows the moving robot camera, simulating mutual gaze with a robot “eye”.</p>
+            <code>line_movement_slow</code><code>line_movement_fast</code>
+            <!-- GIF TODO: Add figures/mutual_gaze.gif showing horizontal/vertical moving robot-camera target. -->
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad alt" id="format">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Dataset format</p>
+      <h2>Raw hierarchy, synchronized signals, and training-ready formats</h2>
+    </div>
+
+    <div class="recording-summary">
+        <h3>What each recording contains</h3>
+        <p>
+          Each timestamp folder stores one recorded trial for a subject, experiment type, and target point. 
+          The raw format keeps the RGB stream together with synchronized pose, gaze-target, robot, camera, and blink-related signals so the same recording can be used for gaze benchmarking, blink masking, and future HRI analysis.
+        </p>
+    </div>
+
+    <div class="two-col">
+      <div class="code-card">
+        <div class="code-card-head">
+          <span>Raw dataset structure</span>
+        </div>
+<pre><code>YYYY-MM-DD/
+└── subj_XXXX/
+    └── exp_type/
+        └── point/
+            └── timestamp/
+                ├── rgb_video.mp4
+                ├── rgb_timestamps.npy
+                ├── rgb_camera_settings.json
+                ├── camera_intrinsics.npy
+                ├── camera_poses.npy
+                ├── head_poses.npy
+                ├── head_bboxes.npy
+                ├── eye_positions.npy
+                ├── eye_position_in_head_frame.npy
+                ├── target_positions.npy
+                ├── blink_annotations_by_*.npy
+                ├── table_pose.npy
+                ├── ur5_base_pose.npy
+                └── ur5_joint_states.npy</code></pre>
+      </div>
+
+        <div class="mini-cards">
+          <div>
+            <strong>RGB and timing</strong>
+            <span><code>rgb_video.mp4</code>, <code>rgb_timestamps.npy</code>, and camera settings for frame-level evaluation.</span>
+          </div>
+          <div>
+            <strong>Gaze ground truth</strong>
+            <span><code>eye_positions.npy</code> and <code>target_positions.npy</code> define the ground-truth 3D gaze vector.</span>
+          </div>
+          <div>
+            <strong>Head and camera pose</strong>
+            <span><code>head_poses.npy</code>, <code>head_bboxes.npy</code>, <code>camera_poses.npy</code>, and intrinsics support pose-aware analysis.</span>
+          </div>
+          <div>
+            <strong>Robot and table state</strong>
+            <span><code>ur5_joint_states.npy</code>, <code>ur5_base_pose.npy</code>, and <code>table_pose.npy</code> describe the HRI setup geometry.</span>
+          </div>
+          <div>
+            <strong>Blink annotations</strong>
+            <span><code>blink_annotations_by_*.npy</code> marks blink frames for masking gaze evaluation or training Blink4HRI models.</span>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+    <section class="section-pad" id="benchmark">
+      <div class="container">
+        <div class="section-heading center">
+          <p class="eyebrow">Benchmark</p>
+          <h2>Zero-shot gaze estimation results</h2>
+          <p>Overview of model performance on Gaze4HRI across key HRI conditions</p>
+        </div>
+
+        <div class="result-callouts">
+          <article>
+            <span>01</span>
+            <h3>Best overall</h3>
+            <p><strong>PureGaze trained on ETH-X-Gaze</strong> is the most reliable method across the HRI conditions tested.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Training data matters</h3>
+            <p>ETH-X-Gaze-trained methods are especially robust to illumination, viewpoint variation, and head-gaze conflict.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Open failure case</h3>
+            <p>Steeply downward gaze remains difficult for all evaluated methods, which is critical for object-centered HRI.</p>
+          </article>
+        </div>
+
+        <div class="tabs" data-tabs>
+          <div class="tab-list" role="tablist" aria-label="Benchmark experiment tabs">
+            <button class="tab-button active" role="tab" aria-selected="true" aria-controls="tab-lighting" id="tab-lighting-button" data-tab="lighting">Illumination</button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-camera" id="tab-camera-button" data-tab="camera">Camera viewpoint</button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-conflict" id="tab-conflict-button" data-tab="conflict">Head-gaze conflict</button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-object" id="tab-object-button" data-tab="object">Object-centered gaze</button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-mutual" id="tab-mutual-button" data-tab="mutual">Mutual gaze</button>
+          </div>
+
+          <section class="tab-panel active" id="tab-lighting" role="tabpanel" aria-labelledby="tab-lighting-button" data-panel="lighting">
+            <div class="benchmark-grid">
+              <div>
+                <h3>Exp. 1: Illumination</h3>
+                <p>PureGaze (E) and GazeTR (E) stay competitive across all illumination settings, while Gaze360-trained methods are more sensitive to lighting level.</p>
+		<h3 class="chart-title">Average angular error by model</h3>
+		<p class="chart-note">
+  			Lower values indicate more accurate gaze estimation.
+		</p>
+		<div class="mini-chart" data-chart="lighting"></div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <caption>Subject-level mean angular error (°). Lower is better.</caption>
+                  <thead><tr><th>Method</th><th>10</th><th>25</th><th>50</th><th>100</th><th>CV%</th></tr></thead>
+                  <tbody>
+                    <tr class="best"><th>PureGaze (E)</th><td>11.73</td><td>11.52</td><td>12.18</td><td>10.19</td><td>7.50</td></tr>
+                    <tr class="best"><th>GazeTR (E)</th><td>11.50</td><td>11.16</td><td>12.45</td><td>11.50</td><td>4.77</td></tr>
+                    <tr><th>PureGaze (G)</th><td>16.92</td><td>14.68</td><td>15.13</td><td>17.82</td><td>9.18</td></tr>
+                    <tr><th>GazeTR (G)</th><td>14.73</td><td>13.81</td><td>15.27</td><td>17.17</td><td>9.30</td></tr>
+                    <tr><th>L2CS-Net (G)</th><td>19.61</td><td>17.60</td><td>18.95</td><td>18.99</td><td>4.51</td></tr>
+                    <tr><th>MCGaze (G)</th><td>19.08</td><td>14.33</td><td>13.24</td><td>14.29</td><td>17.15</td></tr>
+                    <tr><th>GaT (G)</th><td>17.93</td><td>16.74</td><td>15.82</td><td>16.35</td><td>5.36</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- FIGURE TODO: Add figures/lighting_results.png as a line plot across lighting levels. -->
+          </section>
+
+          <section class="tab-panel" id="tab-camera" role="tabpanel" aria-labelledby="tab-camera-button" data-panel="camera" hidden>
+            <div class="benchmark-grid">
+              <div>
+                <h3>Exp. 2: Camera viewpoint</h3>
+                <p>PureGaze (E) is the strongest under moving robot-camera viewpoint variation, with only a small difference from fixed camera to camera-viewpoint setup.</p>
+		<h3 class="chart-title">Average angular error by model</h3>
+		<p class="chart-note">
+  			Lower values indicate more accurate gaze estimation.
+		</p>
+		<div class="mini-chart" data-chart="camera"></div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <caption>Fixed camera vs. camera viewpoint error (°).</caption>
+                  <thead><tr><th>Method</th><th>Fixed cam.</th><th>Cam. view.</th><th>p</th></tr></thead>
+                  <tbody>
+                    <tr class="best"><th>PureGaze (E)</th><td>10.19</td><td>11.12</td><td>.460</td></tr>
+                    <tr><th>GazeTR (E)</th><td>11.50</td><td>14.42</td><td>.004</td></tr>
+                    <tr><th>PureGaze (G)</th><td>17.82</td><td>18.46</td><td>.242</td></tr>
+                    <tr><th>GazeTR (G)</th><td>17.17</td><td>17.80</td><td>.308</td></tr>
+                    <tr><th>L2CS-Net (G)</th><td>18.99</td><td>18.15</td><td>.045</td></tr>
+                    <tr><th>MCGaze (G)</th><td>14.29</td><td>15.57</td><td>.034</td></tr>
+                    <tr><th>GaT (G)</th><td>16.35</td><td>16.05</td><td>.486</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- FIGURE TODO: Add figures/camera_viewpoint_results.png showing fixed vs moving-camera errors. -->
+          </section>
+
+          <section class="tab-panel" id="tab-conflict" role="tabpanel" aria-labelledby="tab-conflict-button" data-panel="conflict" hidden>
+            <div class="benchmark-grid">
+              <div>
+                <h3>Exp. 3: Head-gaze conflict</h3>
+                <p>PureGaze (E) gives the lowest overall error. Gaze360-trained methods, especially MCGaze, degrade more strongly as head-gaze conflict increases.</p>
+		<h3 class="chart-title">Average angular error by model</h3>
+		<p class="chart-note">
+  			Lower values indicate more accurate gaze estimation.
+		</p>
+		<div class="mini-chart" data-chart="conflict"></div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <caption>Head-gaze conflict results. Error is mean angular error (°); β is error increase per conflict degree.</caption>
+                  <thead><tr><th>Method</th><th>Error</th><th>β</th><th>% β &gt; 0</th></tr></thead>
+                  <tbody>
+                    <tr class="best"><th>PureGaze (E)</th><td>7.25</td><td>+0.05</td><td>60</td></tr>
+                    <tr><th>GazeTR (E)</th><td>8.67</td><td>-0.05</td><td>36</td></tr>
+                    <tr><th>PureGaze (G)</th><td>11.38</td><td>+0.04</td><td>50</td></tr>
+                    <tr><th>GazeTR (G)</th><td>12.93</td><td>+0.38</td><td>92</td></tr>
+                    <tr><th>L2CS-Net (G)</th><td>16.62</td><td>+0.50</td><td>92</td></tr>
+                    <tr><th>MCGaze (G)</th><td>20.24</td><td>+0.99</td><td>100</td></tr>
+                    <tr><th>GaT (G)</th><td>12.09</td><td>+0.20</td><td>94</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- FIGURE TODO: Add figures/head_gaze_conflict_results.png showing error vs conflict slope per model. -->
+          </section>
+
+          <section class="tab-panel" id="tab-object" role="tabpanel" aria-labelledby="tab-object-button" data-panel="object" hidden>
+            <div class="benchmark-grid">
+              <div>
+                <h3>Exp. 4.1: Object-centered gaze</h3>
+                <p>Errors increase as targets move closer to the subject, corresponding to steeper downward gaze. This is a key HRI failure mode for tabletop interaction.</p>
+                <div class="heatmap" aria-label="Best method per target point">
+                  <div class="heat high"><strong>P9</strong><span>GazeTR (E)</span><small>15.87°</small></div>
+                  <div class="heat mid"><strong>P8</strong><span>PureGaze (E)</span><small>11.90°</small></div>
+                  <div class="heat mid"><strong>P7</strong><span>GazeTR (E)</span><small>11.80°</small></div>
+                  <div class="heat mid"><strong>P6</strong><span>PureGaze (E)</span><small>10.68°</small></div>
+                  <div class="heat low"><strong>P5</strong><span>PureGaze (E)</span><small>7.87°</small></div>
+                  <div class="heat low"><strong>P4</strong><span>PureGaze (E)</span><small>7.83°</small></div>
+                  <div class="heat low"><strong>P3</strong><span>PureGaze (E)</span><small>7.66°</small></div>
+                  <div class="heat lowest"><strong>P2</strong><span>PureGaze (E)</span><small>6.54°</small></div>
+                  <div class="heat lowest"><strong>P1</strong><span>PureGaze (E)</span><small>6.32°</small></div>
+                </div>
+              </div>
+              <div class="interpretation-panel">
+                <h4>Interpretation</h4>
+                <p>
+                  These results show that gaze estimation becomes less reliable in tabletop HRI scenarios, where people naturally look downward toward shared objects.
+                </p>
+                <ul class="check-list">
+                  <li>Farthest row from the subject is easiest.</li>
+                  <li>Closest row to the subject is hardest.</li>
+                  <li>PureGaze (E) wins most target points.</li>
+                </ul>
+              </div>
+            </div>
+            <!-- FIGURE TODO: Add figures/point_heatmap.png showing the table target grid and best-per-point error. -->
+          </section>
+
+          <section class="tab-panel" id="tab-mutual" role="tabpanel" aria-labelledby="tab-mutual-button" data-panel="mutual" hidden>
+            <div class="benchmark-grid">
+              <div>
+                <h3>Exp. 4.2: Mutual gaze</h3>
+                <p>PureGaze (E) is most accurate in the moving-target mutual-gaze setup; PureGaze/GazeTR architectures are more resilient to pitch-yaw eccentricity than the other methods.</p>
+		<h3 class="chart-title">Average angular error by model</h3>
+		<p class="chart-note">
+  			Lower values indicate more accurate gaze estimation.
+		</p>
+		<div class="mini-chart" data-chart="mutual"></div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <caption>Mutual-gaze setup error (°) across fast/slow and horizontal/vertical scans.</caption>
+                  <thead><tr><th>Method</th><th>Fast-H</th><th>Fast-V</th><th>Slow-H</th><th>Slow-V</th><th>β pitch</th><th>β yaw</th></tr></thead>
+                  <tbody>
+                    <tr class="best"><th>PureGaze (E)</th><td>5.38</td><td>5.31</td><td>5.41</td><td>5.30</td><td>0.08</td><td>0.01</td></tr>
+                    <tr><th>GazeTR (E)</th><td>10.48</td><td>10.50</td><td>10.49</td><td>10.25</td><td>-0.03</td><td>0.03</td></tr>
+                    <tr><th>PureGaze (G)</th><td>9.75</td><td>9.58</td><td>9.15</td><td>9.47</td><td>0.10</td><td>-0.01</td></tr>
+                    <tr><th>GazeTR (G)</th><td>7.61</td><td>7.59</td><td>7.25</td><td>7.20</td><td>0.10</td><td>0.02</td></tr>
+                    <tr><th>L2CS-Net (G)</th><td>15.33</td><td>15.83</td><td>15.23</td><td>15.41</td><td>0.30</td><td>0.66</td></tr>
+                    <tr><th>MCGaze (G)</th><td>22.93</td><td>24.32</td><td>22.69</td><td>23.28</td><td>1.40</td><td>0.82</td></tr>
+                    <tr><th>GaT (G)</th><td>16.43</td><td>16.89</td><td>16.26</td><td>16.23</td><td>0.49</td><td>0.65</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- FIGURE TODO: Add figures/mutual_gaze_results.png showing scan trajectories and model errors. -->
+          </section>
+        </div>
+      </div>
+    </section>  
+
+    <section class="section-pad" id="citation">
+  <div class="container citation-container">
+    <div class="section-heading">
+      <p class="eyebrow">Citation</p>
+      <h2>Cite Gaze4HRI</h2>
+    </div>
+
+    <div class="citation-box">
+      <button class="copy-btn" type="button" data-copy="#bibtex-code">Copy BibTeX</button>
+<pre><code id="bibtex-code">@inproceedings{sezer2026gaze4hri,
+  title={Gaze4HRI: Zero-shot Benchmarking Gaze Estimation Neural-Networks for Human-Robot Interaction},
+  author={Sezer, Berk and Küçük, Ali Görkem and Şahin, Erol and Kalkan, Sinan},
+  booktitle={2026 International Conference on Automatic Face and Gesture Recognition (FG)},
+  year={2026},
+  doi={10.5281/zenodo.19710372}
+}</code></pre>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© Gaze4HRI authors. Built as a static project page.</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="project-links.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
