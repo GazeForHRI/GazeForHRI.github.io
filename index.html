@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gaze4HRI | FG 2026 Dataset and Benchmark</title>
+  <link rel="icon" type="image/svg+xml" href="figures/icons/favicon.svg">
   <meta name="description" content="Gaze4HRI is a large-scale HRI dataset and zero-shot benchmark for appearance-based 3D gaze estimation under illumination, camera viewpoint, head-gaze conflict, and mutual-gaze conditions." />
   <meta property="og:title" content="Gaze4HRI: HRI Gaze Estimation Dataset and Benchmark" />
   <meta property="og:description" content="A dataset-first project page for the Gaze4HRI FG 2026 paper, dataset, and benchmark results." />
@@ -27,10 +28,10 @@
         <span></span><span></span><span></span>
       </button>
       <div class="nav-links" data-nav-links>
-        <a href="#dataset">Dataset</a>
-        <a href="#conditions">Conditions</a>
-        <a href="#format">Format</a>
-        <a href="#benchmark">Benchmark</a>
+        <a href="#dataset">Dataset Content</a>
+        <a href="#conditions">Experiment Conditions</a>
+        <a href="#benchmark">Benchmark Results</a>
+        <a href="#format">Dataset Format</a>
         <a href="#citation">Citation</a>
       </div>
     </nav>
@@ -122,7 +123,7 @@
 
     <section class="section-pad alt" id="dataset">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading center">
           <p class="eyebrow">Dataset focus</p>
           <h2>What Gaze4HRI contains</h2>
           <p>
@@ -182,116 +183,145 @@
       <div class="container">
         <div class="section-heading center">
           <p class="eyebrow">Experiment modules</p>
-          <h2>Four HRI variables, one consistent benchmark</h2>
-          <p>The dataset is organized around named experiment types, so researchers can evaluate exactly where a model fails.</p>
+          <h2>Four HRI variables in one benchmark</h2>
+          <p>
+            Gaze4HRI is organized around four experiment types, each designed to test a different challenge for gaze estimation in HRI.
+          </p>
         </div>
 
-        <!-- FIGURE TODO: Add figures/experiment_design_all.png as a 2×2 panel showing illumination, camera viewpoint, head-gaze conflict, and moving target/mutual gaze setups. -->
-       <img 
-          class="experiment-design-all-img"
-          src="figures/experiment_design_all.png" 
-          alt="Gaze4HRI overview: robot-mounted camera records participants looking at table and robot targets." 
-        />
+        <div class="condition-cards">
+          <article class="experiment-card" data-accent="light">
+            <div class="experiment-card-text">
+              <p class="label">Exp. 1</p>
+              <h3>Illumination</h3>
+              <p>
+                Controlled lighting levels test whether gaze estimation models remain accurate from dim to bright conditions.
+              </p>
+              <div class="experiment-tags">
+                <code>lighting_10</code>
+                <code>lighting_25</code>
+                <code>lighting_50</code>
+                <code>lighting_100</code>
+              </div>
+            </div>
 
-        <div class="condition-grid">
-          <article class="condition-card" data-accent="light">
-            <p class="label">Exp. 1</p>
-            <h3>Illumination</h3>
-            <p>Controlled lighting levels test whether gaze models stay accurate from dim to bright conditions.</p>
-            <code>lighting_10</code><code>lighting_25</code><code>lighting_50</code><code>lighting_100</code>
-            <!-- FIGURE TODO: Add figures/lighting_samples.png showing sample frames at the four illumination levels. -->
+            <div class="experiment-media-grid">
+              <figure class="experiment-media">
+                <img
+                  src="figures/experiment_design_illumination.png"
+                  alt="Experiment design for illumination variation in Gaze4HRI."
+                />
+                <figcaption>Experiment design</figcaption>
+              </figure>
+
+              <figure class="experiment-media">
+                <img
+                  src="figures/gifs/illumination.gif"
+                  alt="Live experiment footage showing the illumination setup."
+                />
+                <figcaption>Live experiment footage</figcaption>
+              </figure>
+            </div>
           </article>
-          <article class="condition-card" data-accent="conflict">
-            <p class="label">Exp. 2</p>
-            <h3>Head-gaze conflict</h3>
-            <p>Fixed head orientations create different degrees of conflict between head-forward and gaze direction.</p>
-            <code>head_pose_left</code><code>head_pose_middle</code><code>head_pose_right</code>
-            <!-- FIGURE TODO: Add figures/head_gaze_conflict.png with blue head direction and green gaze direction arrows. -->
+
+          <article class="experiment-card" data-accent="camera">
+            <div class="experiment-card-text">
+              <p class="label">Exp. 2</p>
+              <h3>Camera viewpoint</h3>
+              <p>
+                The robot-mounted camera moves on an arc around the participant while the gaze targets remain fixed on the table.
+              </p>
+              <div class="experiment-tags">
+                <code>circular_movement</code>
+              </div>
+            </div>
+
+            <div class="experiment-media-grid">
+              <figure class="experiment-media">
+                <img
+                  src="figures/experiment_design_camera.png"
+                  alt="Experiment design for camera viewpoint variation in Gaze4HRI."
+                />
+                <figcaption>Experiment design</figcaption>
+              </figure>
+
+              <figure class="experiment-media">
+                <img
+                  src="figures/gifs/camera_viewpoint.gif"
+                  alt="Live experiment footage showing the camera viewpoint setup."
+                />
+                <figcaption>Live experiment footage</figcaption>
+              </figure>
+            </div>
           </article>
-          <article class="condition-card" data-accent="camera">
-            <p class="label">Exp. 3</p>
-            <h3>Camera viewpoint</h3>
-            <p>The robot camera moves on an arc around the participant while gaze targets remain on the table.</p>
-            <code>circular_movement</code>
-            <!-- GIF TODO: Add figures/camera_viewpoint.gif showing the robot-camera arc. -->
+
+          <article class="experiment-card" data-accent="conflict">
+            <div class="experiment-card-text">
+              <p class="label">Exp. 3</p>
+              <h3>Head-gaze conflict</h3>
+              <p>
+                Fixed head orientations create different levels of conflict between head-forward direction and gaze direction.
+              </p>
+              <div class="experiment-tags">
+                <code>head_pose_left</code>
+                <code>head_pose_middle</code>
+                <code>head_pose_right</code>
+              </div>
+            </div>
+
+            <div class="experiment-media-grid">
+              <figure class="experiment-media">
+                <img
+                  src="figures/experiment_design_head_pose.png"
+                  alt="Experiment design for head-gaze conflict in Gaze4HRI."
+                />
+                <figcaption>Experiment design</figcaption>
+              </figure>
+
+              <figure class="experiment-media">
+                <img
+                  src="figures/gifs/head_gaze_conflict.gif"
+                  alt="Live experiment footage showing the head-gaze conflict setup."
+                />
+                <figcaption>Live experiment footage</figcaption>
+              </figure>
+            </div>
           </article>
-          <article class="condition-card" data-accent="motion">
-            <p class="label">Exp. 4</p>
-            <h3>Moving target / mutual gaze</h3>
-            <p>The participant follows the moving robot camera, simulating mutual gaze with a robot “eye”.</p>
-            <code>line_movement_slow</code><code>line_movement_fast</code>
-            <!-- GIF TODO: Add figures/mutual_gaze.gif showing horizontal/vertical moving robot-camera target. -->
+
+          <article class="experiment-card" data-accent="motion">
+            <div class="experiment-card-text">
+              <p class="label">Exp. 4</p>
+              <h3>Moving target / mutual gaze</h3>
+              <p>
+                The participant follows the moving robot camera, simulating mutual gaze with a robot “eye” under dynamic target motion.
+              </p>
+              <div class="experiment-tags">
+                <code>line_movement_slow</code>
+                <code>line_movement_fast</code>
+              </div>
+            </div>
+
+            <div class="experiment-media-grid">
+              <figure class="experiment-media">
+                <img
+                  src="figures/experiment_design_mutual_gaze.png"
+                  alt="Experiment design for mutual gaze and moving target in Gaze4HRI."
+                />
+                <figcaption>Experiment design</figcaption>
+              </figure>
+
+              <figure class="experiment-media">
+                <img
+                  src="figures/gifs/mutual_gaze.gif"
+                  alt="Live experiment footage showing the moving target or mutual gaze setup."
+                />
+                <figcaption>Live experiment footage</figcaption>
+              </figure>
+            </div>
           </article>
         </div>
       </div>
     </section>
-
-    <section class="section-pad alt" id="format">
-  <div class="container">
-    <div class="section-heading">
-      <p class="eyebrow">Dataset format</p>
-      <h2>Raw hierarchy, synchronized signals, and training-ready formats</h2>
-    </div>
-
-    <div class="recording-summary">
-        <h3>What each recording contains</h3>
-        <p>
-          Each timestamp folder stores one recorded trial for a subject, experiment type, and target point. 
-          The raw format keeps the RGB stream together with synchronized pose, gaze-target, robot, camera, and blink-related signals so the same recording can be used for gaze benchmarking, blink masking, and future HRI analysis.
-        </p>
-    </div>
-
-    <div class="two-col">
-      <div class="code-card">
-        <div class="code-card-head">
-          <span>Raw dataset structure</span>
-        </div>
-<pre><code>YYYY-MM-DD/
-└── subj_XXXX/
-    └── exp_type/
-        └── point/
-            └── timestamp/
-                ├── rgb_video.mp4
-                ├── rgb_timestamps.npy
-                ├── rgb_camera_settings.json
-                ├── camera_intrinsics.npy
-                ├── camera_poses.npy
-                ├── head_poses.npy
-                ├── head_bboxes.npy
-                ├── eye_positions.npy
-                ├── eye_position_in_head_frame.npy
-                ├── target_positions.npy
-                ├── blink_annotations_by_*.npy
-                ├── table_pose.npy
-                ├── ur5_base_pose.npy
-                └── ur5_joint_states.npy</code></pre>
-      </div>
-
-        <div class="mini-cards">
-          <div>
-            <strong>RGB and timing</strong>
-            <span><code>rgb_video.mp4</code>, <code>rgb_timestamps.npy</code>, and camera settings for frame-level evaluation.</span>
-          </div>
-          <div>
-            <strong>Gaze ground truth</strong>
-            <span><code>eye_positions.npy</code> and <code>target_positions.npy</code> define the ground-truth 3D gaze vector.</span>
-          </div>
-          <div>
-            <strong>Head and camera pose</strong>
-            <span><code>head_poses.npy</code>, <code>head_bboxes.npy</code>, <code>camera_poses.npy</code>, and intrinsics support pose-aware analysis.</span>
-          </div>
-          <div>
-            <strong>Robot and table state</strong>
-            <span><code>ur5_joint_states.npy</code>, <code>ur5_base_pose.npy</code>, and <code>table_pose.npy</code> describe the HRI setup geometry.</span>
-          </div>
-          <div>
-            <strong>Blink annotations</strong>
-            <span><code>blink_annotations_by_*.npy</code> marks blink frames for masking gaze evaluation or training Blink4HRI models.</span>
-          </div>
-        </div>
-    </div>
-  </div>
-</section>
 
     <section class="section-pad" id="benchmark">
       <div class="container">
@@ -483,9 +513,76 @@
       </div>
     </section>  
 
+    <section class="section-pad alt" id="format">
+  <div class="container">
+    <div class="section-heading center">
+      <p class="eyebrow">Dataset format</p>
+      <h2>Dataset structure and contents</h2>
+    </div>
+
+    <div class="recording-summary">
+        <h3>What each recording contains</h3>
+        <p>
+          Each timestamp folder stores one recorded trial for a subject, experiment type, and target point. 
+          The raw format keeps the RGB stream together with synchronized pose, gaze-target, robot, camera, and blink-related signals so the same recording can be used for gaze benchmarking, blink masking, and future HRI analysis.
+        </p>
+    </div>
+
+    <div class="two-col">
+      <div class="code-card">
+        <div class="code-card-head">
+          <span>Raw dataset structure</span>
+        </div>
+<pre><code>YYYY-MM-DD/
+└── subj_XXXX/
+    └── exp_type/
+        └── point/
+            └── timestamp/
+                ├── rgb_video.mp4
+                ├── rgb_timestamps.npy
+                ├── rgb_camera_settings.json
+                ├── camera_intrinsics.npy
+                ├── camera_poses.npy
+                ├── head_poses.npy
+                ├── head_bboxes.npy
+                ├── eye_positions.npy
+                ├── eye_position_in_head_frame.npy
+                ├── target_positions.npy
+                ├── blink_annotations_by_*.npy
+                ├── table_pose.npy
+                ├── ur5_base_pose.npy
+                └── ur5_joint_states.npy</code></pre>
+      </div>
+
+        <div class="mini-cards">
+          <div>
+            <strong>RGB and timing</strong>
+            <span><code>rgb_video.mp4</code>, <code>rgb_timestamps.npy</code>, and camera settings for frame-level evaluation.</span>
+          </div>
+          <div>
+            <strong>Gaze ground truth</strong>
+            <span><code>eye_positions.npy</code> and <code>target_positions.npy</code> define the ground-truth 3D gaze vector.</span>
+          </div>
+          <div>
+            <strong>Head and camera pose</strong>
+            <span><code>head_poses.npy</code>, <code>head_bboxes.npy</code>, <code>camera_poses.npy</code>, and intrinsics support pose-aware analysis.</span>
+          </div>
+          <div>
+            <strong>Robot and table state</strong>
+            <span><code>ur5_joint_states.npy</code>, <code>ur5_base_pose.npy</code>, and <code>table_pose.npy</code> describe the HRI setup geometry.</span>
+          </div>
+          <div>
+            <strong>Blink annotations</strong>
+            <span><code>blink_annotations_by_*.npy</code> marks blink frames for masking gaze evaluation or training Blink4HRI models.</span>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
     <section class="section-pad" id="citation">
   <div class="container citation-container">
-    <div class="section-heading">
+    <div class="section-heading center">
       <p class="eyebrow">Citation</p>
       <h2>Cite Gaze4HRI</h2>
     </div>
