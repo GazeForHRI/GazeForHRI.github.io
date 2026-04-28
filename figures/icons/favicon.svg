@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Gaze4HRI icon">
+  <defs>
+    <linearGradient id="gaze4hriGradient" x1="96" y1="80" x2="416" y2="432" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3157D5"></stop>
+      <stop offset="1" stop-color="#14A38B"></stop>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="132" fill="url(#gaze4hriGradient)"></rect>
+
+  <text x="256" y="278" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Arial, sans-serif" font-size="190" font-weight="800" fill="#FFFFFF" letter-spacing="-8">
+    G4H
+  </text>
+</svg>
